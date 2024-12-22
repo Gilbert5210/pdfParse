@@ -23,7 +23,7 @@ def write_to_file(content, output_path):
 def extract_keywords(text, keywords):
     results = []
     for keyword in keywords:
-        pattern = re.compile(rf'{re.escape(keyword)}\s*(\S+)', re.IGNORECASE)
+        pattern = re.compile(rf'{re.escape(keyword)}(?:\s*\n)?\s*([^\n]+)', re.IGNORECASE)
         matches = pattern.findall(text)
         for match in matches:
             results.append((keyword, match))

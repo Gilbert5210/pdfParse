@@ -38,6 +38,10 @@ yarn-cache/
 .vscode/
 *.code-workspace
 
+#webstorm  工作区文件
+.idea/
+*.iml
+
 # 其他临时文件
 npm-debug.log*
 yarn-error.log*
@@ -45,3 +49,9 @@ yarn-error.log*
 # 项目特定的忽略规则
 sourceFiles/ # 假设 sourceFiles 目录包含原始 PDF 文件，不需要版本控制
 output.txt   # 假设 output.txt 是生成的文件，不需要版本控制
+
+venv/
+__pycache__/
+Pipfile
+*.pyc
+*.pyo
