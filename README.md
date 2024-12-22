@@ -13,6 +13,27 @@
 
 这是一个用于从 PDF 文件中提取特定关键词及其后跟随的名字的工具。该工具支持批量处理指定目录下的所有 PDF 文件，并将结果输出到一个文本文件中。
 
+## 小白如何使用
+- 在dist目录下有两个文件分别为
+  - mac 应用包：extract_pdf
+  - window应用包: extract_pdf.exe
+  - 下载到你本地后
+- 分别怎么使用？
+  - mac 应用包：
+    - 在终端输入
+    ```shell
+     # 在这个目录下sourceFiles为需要待查找的文件
+      extract_pdf ./sourceFiles/
+    ```
+
+  - window应用包：
+    - 在终端输入
+    ```shell
+     # 在这个目录下sourceFiles为需要待查找的文件
+      extract_pdf.exe ./sourceFiles/
+    ```
+
+
 ## 安装依赖
 
 ### 在 Windows 上安装依赖
