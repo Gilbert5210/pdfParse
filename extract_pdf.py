@@ -46,17 +46,23 @@ def main():
     # 遍历目录下的所有 PDF 文件
     for pdf_file in Path(directory).glob('*.pdf'):
         pdf_path = str(pdf_file)
+        filename = pdf_file.name
         try:
             text_content = extract_text_from_pdf(pdf_path)
             keywords = ['编辑部主任', '编辑部副主任', '执行主编', '责任编辑', '常务副主编']
             extracted_content = extract_keywords(text_content, keywords)
-            all_results.extend(extracted_content)
+            # all_results.extend(extracted_content)
+            all_results.extend([(filename, *result) for result in extracted_content])
         except Exception as e:
             print(f"处理文件 {pdf_path} 时出错: {e}")
 
     # 将所有结果写入文件
     with open(output_path, 'w', encoding='utf-8') as file:
-        for keyword, name in all_results:
+        seen_filenames = set()
+        for filename, keyword, name in all_results:
+            if filename not in seen_filenames:
+                file.write(f"----------- 文件: {filename} -----------\n")
+                seen_filenames.add(filename)
             file.write(f"{keyword}: {name}\n")
 
     print(f"提取的文本已保存到: {output_path}")
