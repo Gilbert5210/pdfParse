@@ -40,6 +40,16 @@ def main():
         print(f"目录不存在: {directory}")
         sys.exit(1)
 
+    # 文件路径
+    file_path = "keywords.txt"
+
+    # 读取文件内容并存储为数组
+    with open(file_path, "r", encoding="utf-8") as file:
+        keywords = [line.strip() for line in file.readlines()]
+
+    # 输出结果
+    print(keywords)
+
     output_path = 'output.txt'
     all_results = []
 
@@ -49,7 +59,6 @@ def main():
         filename = pdf_file.name
         try:
             text_content = extract_text_from_pdf(pdf_path)
-            keywords = ['编辑部主任', '编辑部副主任', '执行主编', '责任编辑', '常务副主编']
             extracted_content = extract_keywords(text_content, keywords)
             # all_results.extend(extracted_content)
             all_results.extend([(filename, *result) for result in extracted_content])
